@@ -1,0 +1,129 @@
+name: PurpleSMP-Plugin
+version: '1.0-ALPHA'
+main: fr.purplesmp.plugin.Main
+api-version: '1.21'
+authors: [ BatMultifonction ]
+description: Plugin officiel de PurpleSMP
+permissions:
+  # Permissions globales
+  gm.change.*:
+    description: Permet de changer n'importe quel mode de jeu
+    children:
+      gmc.change: true
+      gms.change: true
+      gma.change: true
+      gmsp.change: true
+      gm.change: true
+
+  # --- Commande /gmc ---
+  gmc.change:
+    description: Permet de passer en mode créatif
+    default: op
+    children:
+      gmc.change.self: true
+      gmc.change.others: true
+
+  gmc.change.self:
+    description: Permet de se mettre soi-même en mode créatif
+    default: op
+
+  gmc.change.others:
+    description: Permet de mettre d'autres joueurs en mode créatif
+    default: op
+
+  # --- Commande /gms ---
+  gms.change:
+    description: Permet de passer en mode survie
+    default: op
+    children:
+      gms.change.self: true
+      gms.change.others: true
+
+  gms.change.self:
+    description: Permet de se mettre soi-même en mode survie
+    default: op
+
+  gms.change.others:
+    description: Permet de mettre d'autres joueurs en mode survie
+    default: op
+
+  # --- Commande /gma ---
+  gma.change:
+    description: Permet de passer en mode aventure
+    default: op
+    children:
+      gma.change.self: true
+      gma.change.others: true
+
+  gma.change.self:
+    description: Permet de se mettre soi-même en mode aventure
+    default: op
+
+  gma.change.others:
+    description: Permet de mettre d'autres joueurs en mode aventure
+    default: op
+
+  # --- Commande /gmsp ---
+  gmsp.change:
+    description: Permet de passer en mode spectateur
+    default: op
+    children:
+      gmsp.change.self: true
+      gmsp.change.others: true
+
+  gmsp.change.self:
+    description: Permet de se mettre soi-même en mode spectateur
+    default: op
+
+  gmsp.change.others:
+    description: Permet de mettre d'autres joueurs en mode spectateur
+    default: op
+
+  # --- Commande /gm ---
+  gm.change:
+    description: Permet d'utiliser la commande /gm ou /gamemode
+    default: op
+    children:
+      gm.change.self: true
+      gm.change.others: true
+
+  gm.change.self:
+    description: Permet d'utiliser /gm sur soi-même
+    default: op
+
+  gm.change.others:
+    description: Permet d'utiliser /gm sur d'autres joueurs
+    default: op
+  bypass.automod:
+    description: bypass l'automodération
+commands:
+  gmc:
+    description: Passe en mode créatif
+    aliases: [gamemodec, gamec, gm1, gamem1, gamemode1, gmcreative]
+    usage: /gmc [joueur]
+    permission: gmc.change
+    permission-message: §cVous n'avez pas la permission de passer en créatif !
+  gms:
+    description: Passe en mode survie
+    aliases: [gamemodes, games, gm0, gamem0, gamemode0, gmsurvival]
+    usage: /gms [joueur]
+    permission: gms.change
+    permission-message: §cVous n'avez pas la permission de passer en survie !
+  gma:
+    description: Passe en mode aventure
+    aliases: [gamemodea, gamea, gm2, gamem2, gamemode2, gmadventure]
+    usage: /gma [joueur]
+    permission: gma.change
+    permission-message: §cVous n'avez pas la permission de passer en aventure !
+  gmsp:
+    description: Passe en mode spectateur
+    aliases: [gamemodesp, gamesp, gm3, gamem3, gamemode3, gmspectator]
+    usage: /gmsp [joueur]
+    permission: gmsp.change
+    permission-message: §cVous n'avez pas la permission de passer en spectateur !
+  gm:
+    description: Change ton mode de jeu via un argument (0-3 ou nom, joueur optionnel)
+    aliases: [gamemode]
+    usage: /gm <0|1|2|3|survival|creative|adventure|spectator> [joueur]
+    permission: gm.change.*
+    permission-message: §cVous n'avez pas la permission de changer le mode de jeu !
